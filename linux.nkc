@@ -63,3 +63,12 @@ set hls
 set cscopetag
 set cscopequickfix=s-,c-,d-,i-,t-,e-    //cscope find 后的目标关联到quickfix
 set cst/nocst   //use cscope's tags in default
+
+quick常用命令：
+
+:cc 显示详细错误信息
+:cp 跳到上一个错误
+:cn 跳到下一个错误
+:cl 列出所有的错误
+:copen 打开quickfix窗口，可以在后面添加窗口高度参数，如10行，:copen 10
+:cclose 关闭quickfix窗口

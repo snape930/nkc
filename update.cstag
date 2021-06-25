@@ -1,0 +1,28 @@
+#!/bin/bash
+STDPATH=~/pro_hub/pro_std_code/
+PROPATH=`pwd`
+
+crt_csfile(){
+	if [ -d csfile ]
+	then
+		rm -rf csfile
+	fi
+	mkdir csfile
+	find `pwd` -name "*.c" -o -name "*.h" > csfile/cscope.files
+	cd csfile
+	cscope -bkqR -i cscope.files
+	return 0
+}
+
+dos2unix(){
+	cd $PROPATH
+	dos2unix Inc/*
+	dos2unix Src/*
+	dos2unix Makefile
+}
+
+cd $STDPATH
+crt_csfile
+cd $PROPATH
+crt_csfile
+dos2unix
