@@ -1,0 +1,65 @@
+/*
+ *路由/IP/网络
+ */
+route -n
+route add xxx.xxx.xxx.xxx dev 网卡
+route add -net xxx.xxx.xxx.xxx netmask 255.255.xxx.xxx gw xxx.xxx.xxx.xxx
+//---网卡配置文件位置
+/etc/sysconfig/network-scripts/网卡.conf
+//--ubuntu18+
+/etc/netplan/01-network-manager-all.yaml
+
+//---connect wifi
+sudo nmcli device wifi connect [ssid] password [password] ifname wlan0
+
+//---search ip
+nmap -sP -PI -PT xxx.xxx.xxx.xxx/24
+
+//---search wifi
+sudo iwlist [device name] scan
+//---up/down device
+sudo ip link set [device name] up/down
+
+//---config fix wifi point
+sudo wpa_passphrase {ssid} {password} > /etc/wpa_supplicant/{ssid}.conf
+sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/{ssid}.conf -B
+//---enable dhcp
+sudo dhclient {device name}
+
+
+
+/*
+ * SYSTEM
+ */
+ 
+//---restart service
+systemctl restart systemd-networkd.service
+./etc/init.d/network restart //---very old system
+service network restart      //---useless basically
+
+//---journactl
+journactl -ex
+
+/*---fix disk*/
+//---xfs_repair\umount all failed
+//---Upan 尝试修复， uefi模式不行用普通模式
+//---进入skip to shell mode
+xfs_repair sda1/2/3 
+reboot
+//---if failed mount /sysroot
+xfs_repair /dev/dm-0
+
+
+/*
+ * FILES
+ */
+
+//---vi
+:edit ++enc=cp936
+set nu
+set smartindent
+set fileencodings=utf-8,gb2312,gb18030
+set hls
+set cscopetag
+set cscopequickfix=s-,c-,d-,i-,t-,e-    //cscope find 后的目标关联到quickfix
+set cst/nocst   //use cscope's tags in default

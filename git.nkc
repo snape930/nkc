@@ -1,0 +1,22 @@
+ssh-keygen -t rsa
+
+//---order history
+git reflog
+//---use vim
+git config --global core.editor vim
+
+git commit --amend
+
+git reset HEAD^
+git reset HEAD~n
+
+//---迁仓
+git remote set-url origin xxx.git
+git push -u origin --all
+git push origin --tags    //option
+
+//---logs
+git log --oneline
+git log --raw
+git log --stat
+git log -p
