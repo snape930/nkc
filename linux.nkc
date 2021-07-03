@@ -60,7 +60,6 @@ set nu
 set smartindent
 set fileencodings=utf-8,gb2312,gb18030
 set hls
-set cscopetag
 set cscopequickfix=s-,c-,d-,i-,t-,e-    //cscope find 后的目标关联到quickfix
 set cst/nocst   //use cscope's tags in default
 
