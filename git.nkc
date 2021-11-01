@@ -20,3 +20,7 @@ git log --oneline
 git log --raw
 git log --stat
 git log -p
+
+//---branch
+git fetch        //同步所有分支
+git checkout -b branch-name-local origin/branch-name-remote

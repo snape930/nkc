@@ -71,3 +71,16 @@ quick常用命令：
 :cl 列出所有的错误
 :copen 打开quickfix窗口，可以在后面添加窗口高度参数，如10行，:copen 10
 :cclose 关闭quickfix窗口
+
+//---find
+find . -type d -exec chmod 775 {} \;     //当前目录下所有目录775
+find . -type f -exec chmod 664 {} \;     //当前目录所有文件664
+
+ncat -luk {port} -x {file-name} --sh-exec "cat >> ./{file-name}"  //监听udp,十六进制输出到文件十六进制输出到文件
+ncat -luk {port} -o {file-name} --sh-exec "cat >> ./{file-name}"  //监听udp 正常输出到文件
+
+>log 2>&1
+
+//---删除多与的
+sed -i 's///g' {file-name}
+:%s///g
