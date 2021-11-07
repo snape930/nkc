@@ -1,0 +1,2 @@
+sudo iwlist wlan0 scan
+sudo nmcli device wifi connect "furless" password "00100111" ifname wlan0
