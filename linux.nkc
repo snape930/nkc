@@ -76,8 +76,10 @@ quick常用命令：
 find . -type d -exec chmod 775 {} \;     //当前目录下所有目录775
 find . -type f -exec chmod 664 {} \;     //当前目录所有文件664
 
+//---ncat
 ncat -luk {port} -x {file-name} --sh-exec "cat >> ./{file-name}"  //监听udp,十六进制输出到文件十六进制输出到文件
-ncat -luk {port} -o {file-name} --sh-exec "cat >> ./{file-name}"  //监听udp 正常输出到文件
+ncat -luk {port} -o {file-name} --sh-exec "cat >> ./{file-name}"  //监听udp 字符串输出到文件
+echo -e -n "x01x02" {ip} {port}    //-e 转义 -n 去掉换行 
 
 >log 2>&1
 
