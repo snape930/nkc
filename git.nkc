@@ -24,3 +24,4 @@ git log -p
 //---branch
 git fetch        //同步所有分支
 git checkout -b branch-name-local origin/branch-name-remote
+git remote show origin/prune origin     //show and prune origin branch
