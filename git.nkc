@@ -1,27 +1,30 @@
 ssh-keygen -t rsa
 
-//---order history
-git reflog
-//---use vim
-git config --global core.editor vim
+//---config
+git config --global core.editor vim         //use vim editor
+git config --global credential.helper store //保存https密码
 
-git commit --amend
-
+//---commit
 git reset HEAD^
 git reset HEAD~n
+git commit --amend
 
-//---迁仓
+//---迁仓,branch
 git remote set-url origin xxx.git
+git remote set-url --add origin xxx.git  //增加仓库
 git push -u origin --all
 git push origin --tags    //option
+git fetch        //同步所有分支
+git checkout -b branch-name-local origin/branch-name-remote
+git remote show origin/prune origin     //show and prune origin branch
+git remote -v  //远程仓库list
 
 //---logs
 git log --oneline
 git log --raw
 git log --stat
 git log -p
+git reflog
 
-//---branch
-git fetch        //同步所有分支
-git checkout -b branch-name-local origin/branch-name-remote
-git remote show origin/prune origin     //show and prune origin branch
+
+
