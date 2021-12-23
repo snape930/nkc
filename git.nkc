@@ -4,10 +4,11 @@ ssh-keygen -t rsa
 git config --global core.editor vim         //use vim editor
 git config --global credential.helper store //保存https密码
 
-//---commit
+//---commit, 文件管理
 git reset HEAD^
 git reset HEAD~n
 git commit --amend
+git rm --cached [files]
 
 //---迁仓,branch
 git remote set-url origin xxx.git
