@@ -22,6 +22,9 @@ __attribute__((optimize("O0")))
 openocd -f /usr/share/openocd/script/interface/xxx.cfg -f /usr/share/openocd/script/target/xxx.cfg 
 //---swd mode
 -c "transport select swd"
+sudo dnf install ncurses-compat-libs
+i686 是在32bit 系统中的 64bit应用
+x86_64 是 64bit 系统
 
 //---编译选项
 ./configure --enable-ftdi --enable-openjlink
