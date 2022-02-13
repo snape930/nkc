@@ -26,6 +26,10 @@ git log --raw
 git log --stat
 git log -p
 git reflog
+git log master..dev  //比较dev有 master没有的 commit
+git log dev..master  //比较master 有 dev 没有的 commit
+git log dev...master //比较两者的所有差异 可以加 --left-right 指明属于哪个分支
+git diff dev master --stat   //比较文件差异
 
 
 
