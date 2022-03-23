@@ -9,6 +9,7 @@ git config --global credential.helper store //保存https密码
 git commit --amend
 git reset HEAD^
 git reset HEAD~n
+git reset --hard origin/master               //HEAD for origin/master
 git rm --cached [files]
 
 //---迁仓,branch
