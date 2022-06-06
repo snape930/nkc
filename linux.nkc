@@ -8,6 +8,8 @@ route add -net xxx.xxx.xxx.xxx netmask 255.255.xxx.xxx gw xxx.xxx.xxx.xxx
 /etc/sysconfig/network-scripts/网卡.conf
 //--ubuntu18+
 /etc/netplan/01-network-manager-all.yaml
+//--temp config ip
+ifconfig eth0:0 192.168.0.1 netmask 255.255.255.0 up
 
 //---connect wifi
 sudo nmcli device wifi connect [ssid] password [password] ifname wlan0
