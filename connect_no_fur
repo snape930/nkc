@@ -1,2 +1,0 @@
-sudo iwlist wlan0 scan
-sudo nmcli device wifi connect "no_fur" password "routeR_201001" ifname wlan0

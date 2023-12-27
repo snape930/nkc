@@ -1,2 +1,0 @@
-sudo iwlist wlan0 scan
-sudo nmcli device wifi connect "TP-LINK_A5F4" password "12345678" ifname wlan0

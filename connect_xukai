@@ -1,2 +1,0 @@
-sudo iwlist wlan0 scan
-sudo nmcli device wifi connect "TP-LINK_4484" password "9876543210" ifname wlan0

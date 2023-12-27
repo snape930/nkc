@@ -1,0 +1,90 @@
+/*
+ *路由/IP/网络
+ */
+route -n
+route add xxx.xxx.xxx.xxx dev 网卡
+route add -net xxx.xxx.xxx.xxx netmask 255.255.xxx.xxx gw xxx.xxx.xxx.xxx
+//---网卡配置文件位置
+/etc/sysconfig/network-scripts/网卡.conf
+//--ubuntu18+
+/etc/netplan/01-network-manager-all.yaml
+//--temp config ip
+ifconfig eth0:0 192.168.0.1 netmask 255.255.255.0 up
+
+//---connect wifi
+sudo nmcli device wifi connect [ssid] password [password] ifname wlan0
+
+//---search ip
+nmap -sP -PI -PT xxx.xxx.xxx.xxx/24
+
+//---search wifi
+sudo iwlist [device name] scan
+//---up/down device
+sudo ip link set [device name] up/down
+
+//---config fix wifi point
+sudo wpa_passphrase {ssid} {password} > /etc/wpa_supplicant/{ssid}.conf
+sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/{ssid}.conf -B
+//---enable dhcp
+sudo dhclient {device name}
+
+
+
+/*
+ * SYSTEM
+ */
+ 
+//---restart service
+systemctl restart systemd-networkd.service
+./etc/init.d/network restart //---very old system
+service network restart      //---useless basically
+
+//---journactl
+journactl -ex
+
+/*---fix disk*/
+//---xfs_repair\umount all failed
+//---Upan 尝试修复， uefi模式不行用普通模式
+//---进入skip to shell mode
+xfs_repair sda1/2/3 
+reboot
+//---if failed mount /sysroot
+xfs_repair /dev/dm-0
+
+
+/*
+ * FILES
+ */
+
+//---vi
+:edit ++enc=cp936
+set nu
+set smartindent
+set fileencodings=utf-8,gb2312,gb18030
+set hls
+set cscopequickfix=s-,c-,d-,i-,t-,e-    //cscope find 后的目标关联到quickfix
+set cst/nocst   //use cscope's tags in default
+
+quick常用命令：
+
+:cc 显示详细错误信息
+:cp 跳到上一个错误
+:cn 跳到下一个错误
+:cl 列出所有的错误
+:copen 打开quickfix窗口，可以在后面添加窗口高度参数，如10行，:copen 10
+:cclose 关闭quickfix窗口
+
+//---find
+find . -type d -exec chmod 775 {} \;     //当前目录下所有目录775
+find . -type f -exec chmod 664 {} \;     //当前目录所有文件664
+
+//---ncat
+ncat -luk {port} -x {file-name} --sh-exec "cat >> ./{file-name}"  //监听udp,十六进制输出到文件十六进制输出到文件
+ncat -luk {port} -o {file-name} --sh-exec "cat >> ./{file-name}"  //监听udp 字符串输出到文件
+echo -e -n "x01x02" {ip} {port}    //-e 转义 -n 去掉换行 
+
+>log 2>&1
+
+//---删除多余的^M
+sed -i 's///g' {file-name}
+:%s///g

@@ -1,0 +1,65 @@
+//---字段含义
+---------------------------------------------
+text | flash 里的代码和常量
+data | 初始化全局or局部变量，同时记入flash and ram
+bss  | 未初始化全局or局部变量
+--------------------------------------------
+
+//---指定跳转地址
+vi {xxx}.ld   //修改flash地址
+vi {xxx_system}.c    //设置偏移量
+
+
+//---O3优化，跳转进入hardfault
+//---原因：优化掉了跳转函数的值
+//---对策：用如下禁止优化相应函数
+__attribute__((optimize("O0")))
+
+
+/*
+ * openocd+gdb
+ */
+openocd -f /usr/share/openocd/script/interface/xxx.cfg -f /usr/share/openocd/script/target/xxx.cfg 
+//---swd mode
+-c "transport select swd"
+sudo dnf install ncurses-compat-libs
+i686 是在32bit 系统中的 64bit应用
+x86_64 是 64bit 系统
+
+//---编译选项
+./configure --enable-ftdi --enable-openjlink
+//---如果缺少规则
+cp ../99-openocd.rules /etc/dev/rules.d
+
+//---flash operate
+telent localhost 4444
+halt
+flash {...}
+reset
+
+//---gdb 调试
+:/x/nfu <addr>    //number/formate/length
+-----------------------------------------------
+x examine
+----------
+n 内存个数
+----------
+f 显示方式
+-x 十六进制显示
+-a 十六进制
+-d 十进制显示
+-u 十进制，无符号
+-o 八进制
+-t 二进制
+-i 指令地址格式
+-c 字符
+-f 浮点数
+---------
+u 长度
+-b 单字节
+-h 双字节
+-w 四字节
+-g 八字节
+---------------------------------------------
+
+

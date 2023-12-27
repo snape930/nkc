@@ -1,2 +1,0 @@
-sudo iwlist wlan0 scan
-sudo nmcli device wifi connect "beta" password "routeR_200302" ifname wlan0

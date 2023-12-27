@@ -1,8 +1,0 @@
-//---仿真配置
-DARMSTM.DLL
--pSTM32F103VC
--pSTM32F407vg
-
-
-//---debug can't running
-//---select microlib

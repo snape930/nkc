@@ -1,0 +1,5 @@
+ping all
+ping -n 1 -w 60 xxx.xxx.xxx.xxx | find "Return" 1>>ping_all.txt
+
+//---check link
+arp -a
