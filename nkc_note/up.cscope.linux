@@ -1,0 +1,22 @@
+#!/bin/bash
+PROPATH=`pwd`
+MERCURY=../interfaces/
+
+crt_csfile(){
+	if [ -d csfile ]
+	then
+		rm -rf csfile
+	fi
+	mkdir csfile
+	find `pwd` -name "*.c" -o -name "*.s" -o -name "*.h" -o -name "*.asm" -o -name "*.cpp" -o -name "*.hal" > csfile/cscope.files
+	cscope -bkqR -i csfile/cscope.files
+	ctags -R .
+	return 0
+}
+
+cd $MERCURY
+crt_csfile
+mv cscope* csfile/
+cd $PROPATH
+crt_csfile
+mv cscope* csfile/
