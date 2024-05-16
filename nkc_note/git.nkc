@@ -2,8 +2,10 @@
 ssh-keygen -t rsa
 
 //---config
+git config --global list
 git config --global core.editor vim         //use vim editor
 git config --global credential.helper store //保存https密码
+git config --global alias.logg=log --oneline --graph --all 
 
 //---commit, 文件管理
 git commit --amend
@@ -33,5 +35,6 @@ git log master..dev  //比较dev有 master没有的 commit
 git log dev..master  //比较master 有 dev 没有的 commit
 git log dev...master //比较两者的所有差异 可以加 --left-right 指明属于哪个分支
 git reflog
+
 
 
