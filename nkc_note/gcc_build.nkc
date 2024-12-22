@@ -28,6 +28,11 @@ sudo dnf install ncurses-compat-libs
 i686 是在32bit 系统中的 64bit应用
 x86_64 是 64bit 系统
 
+//---debug
+./openocd -i stlink-v2.cfg -d stm32f4xx.cfg
+target remote: 3333
+lo
+
 //---编译选项
 ./configure --enable-ftdi --enable-openjlink
 //---如果缺少规则
